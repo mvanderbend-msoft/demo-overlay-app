@@ -1,6 +1,6 @@
 {
   "name": "demo-overlay",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Transparent always-on-top lower-third overlay for VS Code GHCP demos.",
   "main": "main.js",
   "scripts": {
