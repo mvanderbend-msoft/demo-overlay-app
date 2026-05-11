@@ -5,14 +5,16 @@
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)](https://github.com/mvanderbend-msoft/demo-overlay-app/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-A transparent, always-on-top **lower-third banner** for VS Code GitHub Copilot
-demos. Shows the current topic (title + subtitle + position indicator) over
-whatever app you're presenting, controlled by global keyboard shortcuts.
+A transparent, always-on-top **lower-third banner** for live demos, talks, and
+tutorials. Shows the current topic (title + subtitle + position indicator) over
+whatever app you're presenting — IDE, browser, terminal, design tool — and you
+step through your script with global keyboard shortcuts.
 
-Built with Electron — designed to be visible when sharing your screen in
-Microsoft Teams.
+Built with Electron. Designed to stay visible when you share your screen in
+Microsoft Teams, Zoom, Google Meet, OBS, or anything else that captures the
+desktop.
 
-![Lower-third overlay shown over VS Code](docs/screenshots/01-overlay.png)
+![Lower-third overlay shown during a demo](docs/screenshots/01-overlay.png)
 
 ## Quick start
 
@@ -29,9 +31,10 @@ npm start
 ```
 
 The overlay opens centered at the bottom of your primary display and is
-**click-through** (it never steals focus from VS Code). On first run, your
-local `sections.json` is seeded from [`sections.example.json`](sections.example.json)
-— edit it (or use the Settings UI) and the overlay hot-reloads.
+**click-through** — it never steals focus from the app you're presenting. On
+first run, your local `sections.json` is seeded from
+[`sections.example.json`](sections.example.json) — edit it (or use the Settings
+UI) and the overlay hot-reloads.
 
 > `sections.json` is **gitignored** so your personal demo script never gets
 > committed. Only the example file ships with the repo.
@@ -64,14 +67,16 @@ there you can:
   details, notes, and animation keys. Save to write `sections.json`; the
   overlay hot-reloads.
 - **Customize branding & hero text**: change the small label above each
-  section (default: *GitHub Copilot Foundations*) and the celebration screen
-  shown after the last section — eyebrow (*CONGRATULATIONS*), big title
-  (*You are now a Hero*), and subtitle. The last word of the hero title is
-  automatically wrapped in the gradient highlight.
-- **Generate sections from a script**: paste a GitHub PAT (stored encrypted
-  via Electron `safeStorage` in your user-data folder), upload a `.txt`,
-  `.md`, `.pdf`, or `.docx` script, and let GitHub Models turn it into
-  sections matching the schema. Review, tweak, then **Save**.
+  section (your talk title, product name, event, etc.) and the celebration
+  screen shown after the last section — eyebrow (*CONGRATULATIONS*), big
+  title (*You are now a Hero*), and subtitle. The last word of the hero
+  title is automatically wrapped in the gradient highlight.
+- **Generate sections from a script** *(optional — uses GitHub Models)*:
+  paste a GitHub PAT (stored encrypted via Electron `safeStorage` in your
+  user-data folder), upload a `.txt`, `.md`, `.pdf`, or `.docx` outline of
+  your talk, and let an LLM turn it into sections matching the schema.
+  Review, tweak, then **Save**. Skip this feature entirely if you'd rather
+  hand-author `sections.json`.
 
 ![Settings window with sections list and AI generation panel](docs/screenshots/02-settings.png)
 
@@ -89,8 +94,9 @@ hero text. Press `Ctrl+Alt+Enter` to toggle it on demand, or to dismiss.
 
 ```json
 [
-  { "title": "Custom Instructions", "subtitle": "Steer Copilot's behavior with .github/copilot-instructions.md" },
-  { "title": "Skills",              "subtitle": "Composable capabilities your agent can invoke" }
+  { "title": "Introduction",   "subtitle": "Why this matters and what you'll learn" },
+  { "title": "Core concepts",  "subtitle": "The mental model in two minutes" },
+  { "title": "Live walkthrough","subtitle": "Putting it together end-to-end" }
 ]
 ```
 
@@ -110,10 +116,10 @@ Settings UI.
   "expandedHeight": 460,         // overlay height when details are expanded (Ctrl+Alt+Space)
   "marginBottom": 60,
   "accentColor": "#8957e5",
-  "brandTitle": "GitHub Copilot Foundations",
+  "brandTitle": "My Demo",
   "heroEyebrow": "CONGRATULATIONS",
   "heroTitle": "You are now a Hero",
-  "heroSubtitle": "GitHub Copilot · Zero-To-Hero · Complete",
+  "heroSubtitle": "Demo Complete",
   "hotkeys": { "next": "Control+Alt+Right", "...": "..." }
 }
 ```
@@ -130,15 +136,16 @@ Settings UI.
 To find your user-data folder quickly: open Settings → tray icon menu → or run
 `echo %APPDATA%\demo-overlay` in a terminal.
 
-## ⚠️ Sharing in Microsoft Teams
+## ⚠️ Sharing in screen-conferencing tools
 
 Transparent always-on-top windows are **only captured when you share the entire
-desktop / screen** — not when you share a single window. In Teams, choose:
+desktop / screen** — not when you share a single window. In Teams, Zoom, Meet,
+etc., choose:
 
-> Share → **Screen** (not "Window")
+> Share → **Screen / Entire desktop** (not a single "Window")
 
-If you share VS Code as a single window, the overlay will not appear in the
-captured stream. This is a limitation of how Windows window-capture APIs treat
+If you share just one app window, the overlay will not appear in the captured
+stream. This is a limitation of how Windows window-capture APIs treat
 layered/transparent windows, not of this app.
 
 ## Troubleshooting
@@ -171,7 +178,7 @@ demo-overlay-app/
 │   ├── settings.css
 │   ├── settings.js
 │   ├── preload.js           # IPC bridge for settings window
-│   └── generate.js          # Script parsing + GitHub Models call
+│   └── generate.js          # Optional script parsing + LLM (GitHub Models) call
 ├── renderer/
 │   ├── index.html           # Lower-third overlay
 │   ├── styles.css

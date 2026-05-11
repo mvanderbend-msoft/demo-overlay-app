@@ -1,9 +1,10 @@
 # Contributing to demo-overlay-app
 
 Thanks for taking the time to contribute! This project is a small Electron app
-that puts a transparent lower-third banner over VS Code for GitHub Copilot
-demos. Contributions of any size are welcome — bug reports, new animations,
-hero finale tweaks, packaging improvements, docs fixes, all of it.
+that puts a transparent lower-third banner over whatever app you're presenting,
+so you can step through a demo or tutorial with global keyboard shortcuts.
+Contributions of any size are welcome — bug reports, new animations, hero
+finale tweaks, packaging improvements, docs fixes, all of it.
 
 ## Getting started
 
@@ -30,7 +31,8 @@ Please open an issue using the **Bug report** template and include:
 ## Suggesting features
 
 Use the **Feature request** template. The bar is roughly: "does this help
-someone giving a Copilot demo?" If yes, it's probably in scope.
+someone running a live demo, talk, or tutorial?" If yes, it's probably in
+scope.
 
 ## Pull requests
 

@@ -16,10 +16,10 @@ const DEFAULT_CONFIG = {
   expandedHeight: 460,
   marginBottom: 60,
   accentColor: '#8957e5',
-  brandTitle: 'GitHub Copilot Foundations',
+  brandTitle: 'My Demo',
   heroEyebrow: 'CONGRATULATIONS',
   heroTitle: 'You are now a Hero',
-  heroSubtitle: 'GitHub Copilot · Zero-To-Hero · Complete',
+  heroSubtitle: 'Demo Complete',
   hotkeys: {
     next: 'Control+Alt+Right',
     prev: 'Control+Alt+Left',
