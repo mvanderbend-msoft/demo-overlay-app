@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';" />
+  <title>Demo Overlay</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stage">
+    <div class="card" id="card">
+      <div class="brand" id="brand">GitHub Copilot Foundations</div>
+      <div class="header">
+        <div class="accent" id="accent"></div>
+        <div class="content">
+          <div class="title" id="title">&nbsp;</div>
+          <div class="subtitle" id="subtitle">&nbsp;</div>
+        </div>
+        <div class="index" id="index">&nbsp;</div>
+      </div>
+      <div class="expanded-area" id="expandedArea">
+        <ul class="details" id="details"></ul>
+        <div class="animation" id="animation"></div>
+      </div>
+    </div>
+  </div>
+  <script src="animations.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>

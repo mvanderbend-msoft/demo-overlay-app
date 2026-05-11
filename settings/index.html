@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';" />
+  <title>Demo Overlay — Settings</title>
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Demo Overlay · Settings</div>
+    <div class="actions">
+      <button id="saveBtn" class="primary">Save sections</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <h2>Sections</h2>
+        <button id="addSectionBtn" title="Add section">+ Add</button>
+      </div>
+      <ul id="sectionList" class="section-list"></ul>
+    </aside>
+
+    <section class="main-panel">
+      <details class="panel">
+        <summary>Branding &amp; hero text</summary>
+        <div class="panel-body">
+          <p class="hint">
+            Customize the small label above each section and the celebration
+            screen shown after the last section. Saved to <code>config.json</code>.
+          </p>
+          <div class="form-row">
+            <label for="b-brand">Brand title (above each section)</label>
+            <input id="b-brand" type="text" />
+          </div>
+          <div class="form-row">
+            <label for="b-eyebrow">Hero eyebrow</label>
+            <input id="b-eyebrow" type="text" />
+          </div>
+          <div class="form-row">
+            <label for="b-title">Hero title (use plain text)</label>
+            <input id="b-title" type="text" />
+          </div>
+          <div class="form-row">
+            <label for="b-sub">Hero subtitle</label>
+            <input id="b-sub" type="text" />
+          </div>
+          <div class="form-row">
+            <button id="saveBrandingBtn" class="primary">Save branding</button>
+            <span id="brandingStatus" class="status"></span>
+          </div>
+        </div>
+      </details>
+
+      <details class="panel" open>
+        <summary>AI: Generate sections from a script</summary>
+        <div class="panel-body">
+          <p class="hint">
+            Upload a <code>.txt</code>, <code>.md</code>, <code>.pdf</code>, or <code>.docx</code>
+            script. GitHub Models will turn it into sections matching the current
+            schema. <strong>Replaces all current sections.</strong>
+          </p>
+
+          <div class="form-row">
+            <label for="apiKey">GitHub PAT (for GitHub Models)</label>
+            <div class="key-row">
+              <input id="apiKey" type="password" placeholder="ghp_..." autocomplete="off" />
+              <button id="saveKeyBtn">Save</button>
+              <button id="clearKeyBtn" class="ghost">Clear</button>
+            </div>
+            <div id="keyStatus" class="status"></div>
+          </div>
+
+          <div class="form-row">
+            <label for="model">Model</label>
+            <select id="model">
+              <option value="openai/gpt-4o-mini">openai/gpt-4o-mini (fast)</option>
+              <option value="openai/gpt-4o" selected>openai/gpt-4o</option>
+              <option value="openai/gpt-4.1">openai/gpt-4.1</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <button id="pickFileBtn">Choose script file…</button>
+            <span id="pickedFile" class="status"></span>
+          </div>
+
+          <div class="form-row">
+            <button id="generateBtn" class="primary">Generate sections</button>
+            <span id="genStatus" class="status"></span>
+          </div>
+        </div>
+      </details>
+
+      <div class="panel editor-panel" id="editorPanel">
+        <div class="empty" id="emptyState">Select a section on the left, or click <strong>+ Add</strong>.</div>
+        <div class="editor" id="editor" hidden>
+          <div class="form-row">
+            <label>Key (unique id, optional)</label>
+            <input id="f-key" type="text" />
+          </div>
+          <div class="form-row">
+            <label>Title</label>
+            <input id="f-title" type="text" />
+          </div>
+          <div class="form-row">
+            <label>Subtitle</label>
+            <input id="f-subtitle" type="text" />
+          </div>
+          <div class="form-row">
+            <label>Animation key</label>
+            <input id="f-animation" type="text" placeholder="e.g. intro, plan-mode, skills…" />
+          </div>
+          <div class="form-row">
+            <label>Details (one bullet per line)</label>
+            <textarea id="f-details" rows="5"></textarea>
+          </div>
+          <div class="form-row">
+            <label>Notes (one paragraph per line)</label>
+            <textarea id="f-notes" rows="8"></textarea>
+          </div>
+          <div class="form-row danger-row">
+            <button id="deleteBtn" class="danger">Delete section</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="settings.js"></script>
+</body>
+</html>

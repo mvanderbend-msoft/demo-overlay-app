@@ -1,0 +1,21 @@
+{
+  "position": "bottom-center",
+  "width": 960,
+  "collapsedHeight": 160,
+  "expandedHeight": 460,
+  "marginBottom": 60,
+  "accentColor": "#8957e5",
+  "hotkeys": {
+    "next": "Control+Alt+Right",
+    "prev": "Control+Alt+Left",
+    "first": "Control+Alt+Home",
+    "toggle": "Control+Alt+H",
+    "expand": "Control+Alt+Space",
+    "settings": "Control+Alt+,",
+    "quit": "Control+Alt+Q"
+  },
+  "brandTitle": "GitHub Copilot Founda",
+  "heroEyebrow": "CONGRATULATIONS",
+  "heroTitle": "You are now a Hero",
+  "heroSubtitle": "GitHub Copilot · Zero-To-Hero · Complete"
+}

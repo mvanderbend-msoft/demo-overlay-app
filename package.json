@@ -1,0 +1,25 @@
+{
+  "name": "demo-overlay",
+  "version": "0.1.0",
+  "description": "Transparent always-on-top lower-third overlay for VS Code GHCP demos.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "overlay",
+    "electron",
+    "demo",
+    "vscode",
+    "copilot"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^32.0.0"
+  },
+  "dependencies": {
+    "mammoth": "^1.12.0",
+    "pdf-parse": "^2.4.5"
+  }
+}

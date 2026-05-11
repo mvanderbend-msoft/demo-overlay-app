@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+dist/
+out/
+*.log
+.DS_Store
+
+# Your personal demo script — see sections.example.json for the format.
+sections.json

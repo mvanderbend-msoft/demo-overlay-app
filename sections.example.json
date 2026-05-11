@@ -1,0 +1,30 @@
+[
+  {
+    "key": "welcome",
+    "title": "Welcome",
+    "subtitle": "Edit me in the Settings window — or generate from a script",
+    "details": [
+      "Open Settings with Ctrl+Alt+,",
+      "Add, edit, reorder, or delete sections",
+      "Or upload a .txt / .md / .pdf / .docx and let GitHub Models do it"
+    ],
+    "animation": "welcome",
+    "notes": [
+      "This is a placeholder section. Replace it with your own demo script."
+    ]
+  },
+  {
+    "key": "next-steps",
+    "title": "Next Steps",
+    "subtitle": "Use Ctrl+Alt+→ / ← to move between sections — Ctrl+Alt+H to hide",
+    "details": [
+      "Ctrl+Alt+Space toggles the expanded details view",
+      "Ctrl+Alt+Enter triggers the hero finale",
+      "Edit sections.json directly — the overlay hot-reloads"
+    ],
+    "animation": "next-steps",
+    "notes": [
+      "When you advance past the last section, the hero finale plays automatically."
+    ]
+  }
+]
