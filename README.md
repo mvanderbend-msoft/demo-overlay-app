@@ -12,7 +12,7 @@ Microsoft Teams.
 ## Quick start
 
 ```sh
-cd demo-overlay
+cd demo-overlay-app
 npm install
 npm start
 ```
@@ -27,16 +27,19 @@ local `sections.json` is seeded from [`sections.example.json`](sections.example.
 
 ## Default hotkeys
 
-| Shortcut             | Action                       |
-| -------------------- | ---------------------------- |
-| `Ctrl+Alt+→`         | Next section                 |
-| `Ctrl+Alt+←`         | Previous section             |
-| `Ctrl+Alt+Home`      | Jump to first section        |
-| `Ctrl+Alt+1` … `9`   | Jump to section 1..9         |
-| `Ctrl+Alt+0`         | Jump to section 10           |
-| `Ctrl+Alt+H`         | Toggle visibility            |
-| `Ctrl+Alt+,`         | Open Settings window         |
-| `Ctrl+Alt+Q`         | Quit                         |
+| Shortcut             | Action                                |
+| -------------------- | ------------------------------------- |
+| `Ctrl+Alt+→`         | Next section                          |
+| `Ctrl+Alt+←`         | Previous section                      |
+| `Ctrl+Alt+Home`      | Jump to first section                 |
+| `Ctrl+Alt+1` … `9`   | Jump to section 1..9                  |
+| `Ctrl+Alt+0`         | Jump to section 10                    |
+| `Ctrl+Alt+Space`     | Toggle expanded details view          |
+| `Ctrl+Alt+H`         | Toggle overlay visibility             |
+| `Ctrl+Alt+F`         | Toggle positioning frame guide        |
+| `Ctrl+Alt+Enter`     | Toggle hero finale screen             |
+| `Ctrl+Alt+,`         | Open Settings window                  |
+| `Ctrl+Alt+Q`         | Quit                                  |
 
 Override these in `config.json`.
 
@@ -80,8 +83,11 @@ hero text. Press `Ctrl+Alt+Enter` to toggle it on demand, or to dismiss.
 ]
 ```
 
-Save the file — the overlay reloads automatically. Pre-populated with a 7-step
-zero-to-hero GHCP script (Custom Instructions → Awesome-Copilot).
+Save the file — the overlay reloads automatically. The repo ships with
+[`sections.example.json`](sections.example.json) containing two placeholder
+sections (*Welcome*, *Next Steps*) so you have a working starting point; replace
+them with your own demo script, or generate one from a document via the
+Settings UI.
 
 ## Configuration — `config.json`
 
@@ -89,9 +95,14 @@ zero-to-hero GHCP script (Custom Instructions → Awesome-Copilot).
 {
   "position": "bottom-center",   // bottom-center | bottom-left | bottom-right | top-center
   "width": 960,
-  "height": 140,
-  "marginBottom": 80,
+  "collapsedHeight": 160,        // overlay height when only title + subtitle are shown
+  "expandedHeight": 460,         // overlay height when details are expanded (Ctrl+Alt+Space)
+  "marginBottom": 60,
   "accentColor": "#8957e5",
+  "brandTitle": "GitHub Copilot Foundations",
+  "heroEyebrow": "CONGRATULATIONS",
+  "heroTitle": "You are now a Hero",
+  "heroSubtitle": "GitHub Copilot · Zero-To-Hero · Complete",
   "hotkeys": { "next": "Control+Alt+Right", "...": "..." }
 }
 ```
@@ -131,20 +142,25 @@ layered/transparent windows, not of this app.
 ## Project layout
 
 ```
-demo-overlay/
-├── main.js              # Electron main: window, shortcuts, hot-reload, tray, settings IPC
-├── preload.js           # IPC bridge to overlay renderer
+demo-overlay-app/
+├── main.js                  # Electron main: windows, shortcuts, hot-reload, tray, IPC
+├── preload.js               # IPC bridge to overlay renderer
 ├── settings/
-│   ├── index.html       # Settings UI
+│   ├── index.html           # Settings UI
 │   ├── settings.css
 │   ├── settings.js
-│   ├── preload.js       # IPC bridge for settings window
-│   └── generate.js      # Script parsing + GitHub Models call
+│   ├── preload.js           # IPC bridge for settings window
+│   └── generate.js          # Script parsing + GitHub Models call
 ├── renderer/
-│   ├── index.html
+│   ├── index.html           # Lower-third overlay
 │   ├── styles.css
-│   └── renderer.js
-├── sections.json        # Demo script (edit me, or generate via Settings!)
-├── config.json          # Position, hotkeys, theme
+│   ├── renderer.js
+│   ├── animations.js        # Per-section title/subtitle animations
+│   ├── frame.html / .css    # Positioning frame guide (Ctrl+Alt+F)
+│   └── hero.html / .css / .js  # Full-screen hero finale
+├── docs/screenshots/        # README images
+├── sections.example.json    # Seed for sections.json on first run
+├── sections.json            # Your demo script (gitignored — edit or generate)
+├── config.json              # Position, sizes, hotkeys, branding, hero text
 └── package.json
 ```
