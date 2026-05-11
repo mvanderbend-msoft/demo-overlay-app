@@ -1,6 +1,6 @@
 {
   "name": "demo-overlay",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Transparent always-on-top lower-third overlay for live demos, talks, and tutorials.",
   "main": "main.js",
   "scripts": {
