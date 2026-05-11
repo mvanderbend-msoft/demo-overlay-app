@@ -4,19 +4,67 @@
   "description": "Transparent always-on-top lower-third overlay for VS Code GHCP demos.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder --win --publish never",
+    "dist:dir": "electron-builder --win --dir"
   },
   "keywords": [
     "overlay",
     "electron",
     "demo",
     "vscode",
-    "copilot"
+    "copilot",
+    "lower-third",
+    "presentation",
+    "teams"
   ],
-  "author": "",
+  "author": "Michael Van Der Bend",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mvanderbend-msoft/demo-overlay-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mvanderbend-msoft/demo-overlay-app/issues"
+  },
+  "homepage": "https://github.com/mvanderbend-msoft/demo-overlay-app#readme",
+  "build": {
+    "appId": "com.mvanderbend.demo-overlay",
+    "productName": "Demo Overlay",
+    "files": [
+      "main.js",
+      "preload.js",
+      "config.json",
+      "sections.example.json",
+      "renderer/**/*",
+      "settings/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "sections.example.json",
+        "to": "sections.example.json"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
   "devDependencies": {
-    "electron": "^32.0.0"
+    "electron": "^32.0.0",
+    "electron-builder": "^25.1.8"
   },
   "dependencies": {
     "mammoth": "^1.12.0",

@@ -1,5 +1,10 @@
 # Demo Overlay
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Electron](https://img.shields.io/badge/Electron-32-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/)
+[![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)](https://github.com/mvanderbend-msoft/demo-overlay-app/releases)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 A transparent, always-on-top **lower-third banner** for VS Code GitHub Copilot
 demos. Shows the current topic (title + subtitle + position indicator) over
 whatever app you're presenting, controlled by global keyboard shortcuts.
@@ -11,7 +16,13 @@ Microsoft Teams.
 
 ## Quick start
 
+**Pre-built installer (Windows):** grab the latest `.exe` from
+[Releases](https://github.com/mvanderbend-msoft/demo-overlay-app/releases).
+
+**From source:**
+
 ```sh
+git clone https://github.com/mvanderbend-msoft/demo-overlay-app.git
 cd demo-overlay-app
 npm install
 npm start
@@ -138,6 +149,16 @@ layered/transparent windows, not of this app.
   global shortcut. Override in `config.json`.
 - **It's blocking my clicks:** it shouldn't — the window is click-through. If
   it does, you've found a bug; please report it.
+
+## Contributing
+
+Bug reports, ideas, and pull requests are welcome — see
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for the short version. The repo ships
+with bug / feature issue templates to make filing easy.
+
+## License
+
+MIT — see [`LICENSE`](LICENSE).
 
 ## Project layout
 
